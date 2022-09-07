@@ -248,32 +248,32 @@ class Config extends BaseObject implements \ArrayAccess, \Countable, \Iterator
     } // end setAttributes()
 
 
-    function rewind() {
+    function rewind():void {
         reset($this->values);
     }
-    function current() {
+    function current():mixed {
         return current($this->values);
     }
-    function key() {
+    function key():mixed {
         return key($this->values);
     }
-    function next() {
+    function next():void {
         next($this->values);
     }
-    function valid() {
+    function valid():bool {
         return key($this->values) !== null;
     }
 
 
 
-    public function count()
+    public function count():int
     {
         return count($this->values);
     } // end count()
 
 
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value):void
     {
         if (is_null($offset)) {
             $this->values[] = $value;
@@ -281,11 +281,11 @@ class Config extends BaseObject implements \ArrayAccess, \Countable, \Iterator
             $this->values[$offset] = $value;
         }
     }
-    public function offsetExists($offset)
+    public function offsetExists($offset):bool
     {
         return isset($this->values[$offset]);
     }
-    public function offsetUnset($offset)
+    public function offsetUnset($offset):void
     {
         if (isset($this->values[$offset])) {
             $this->deleteKeys[] = $offset;
@@ -293,7 +293,7 @@ class Config extends BaseObject implements \ArrayAccess, \Countable, \Iterator
 
         unset($this->values[$offset]);
     }
-    public function offsetGet($offset)
+    public function offsetGet($offset):bool
     {
         return $this->values[$offset] ?? null;
     }
