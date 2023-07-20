@@ -281,7 +281,7 @@ class Config extends BaseObject implements \ArrayAccess, \Countable, \Iterator
             $this->values[$offset] = $value;
         }
     }
-    public function offsetExists($offset):bool
+    public function offsetExists($offset):mixed
     {
         return isset($this->values[$offset]);
     }
@@ -293,7 +293,7 @@ class Config extends BaseObject implements \ArrayAccess, \Countable, \Iterator
 
         unset($this->values[$offset]);
     }
-    public function offsetGet($offset):bool
+    public function offsetGet($offset):mixed
     {
         return $this->values[$offset] ?? null;
     }
